@@ -61,7 +61,7 @@ GLOBAL_VAR(first_officer)
 	response_not_enough = "Your bank balance does not hold enough money at the moment or the system has been overriden. We are sending a patrol ship for second attempt negotiations, stand by."
 	announcement_color = "purple"
 
-/datum/pirate_gang/nri_raiders/generate_message(payoff)
+/* /datum/pirate_gang/nri_raiders/generate_message(payoff)
 	var/number = rand(1,99)
 	///Station name one is the most important pick and is pretty much the station's main argument against getting fined, thus it better be mostly always right.
 	var/station_designation = pick_weight(list(
@@ -96,7 +96,7 @@ GLOBAL_VAR(first_officer)
 	arrival_announcement = replacetext(arrival_announcement, "%NUMBER1", pick(GLOB.phonetic_alphabet))
 	arrival_announcement = replacetext(arrival_announcement, "%NUMBER2", pick(GLOB.phonetic_alphabet))
 	arrival_announcement = replacetext(arrival_announcement, "%NUMBER3", pick(GLOB.phonetic_alphabet))
-	return new /datum/comm_message(threat_title, built_threat_content, possible_answers)
+	return new /datum/comm_message(threat_title, built_threat_content, possible_answers) */
 
 /datum/outfit/pirate/nri/post_equip(mob/living/carbon/human/equipped)
 	. = ..()
@@ -146,6 +146,7 @@ GLOBAL_VAR(first_officer)
 
 /obj/item/modular_computer/pda/nri_police
 	name = "\improper Commonwealth police PDA"
+	icon_state = "/obj/item/modular_computer/pda/nri_police"
 	device_theme = PDA_THEME_TERMINAL
 	greyscale_colors = "#363655#7878f7"
 	comp_light_luminosity = 6.3 //Matching a flashlight
@@ -174,8 +175,7 @@ GLOBAL_VAR(first_officer)
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
 	threat_modifier = 2 // Not as treatening as syndicate, but still potentially harmful to the station
 
-/obj/item/gun/energy/e_gun/advtaser/normal
-	w_class = WEIGHT_CLASS_NORMAL
+/obj/item/gun/energy/e_gun/advtaser
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider
 	name = "Pan-Slavic Raider sleeper"
@@ -528,7 +528,7 @@ GLOBAL_VAR(first_officer)
 /datum/antagonist/cop
 	name = "\improper Commonwealth Police Officer"
 	//Even if their goal's almost a complete antithesis to what pirates normally do, their spawn is, well, done via pirate code.
-	job_rank = ROLE_SPACE_PIRATE
+	pref_flag = ROLE_SPACE_PIRATE
 	roundend_category = "nri cops"
 	antagpanel_category = "Commonwealth Police"
 	show_in_antagpanel = FALSE
